@@ -1,4 +1,4 @@
-# Atmospheric Sensing and Terrestrial Real-time Analysis Unit00 Document
+# Atmospheric Sensing and Terrestrial Real-time Analysis Unit00 Documentation
 
 This documentation explains how to replicate the system step by step.
 
