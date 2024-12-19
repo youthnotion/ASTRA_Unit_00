@@ -42,8 +42,10 @@ void DHT_Unified::begin() { _dht.begin(); }
  *  @param  sensor
  *          Sensor that will be set
  */
-void DHT_Unified::setName(sensor_t *sensor) {
-  switch (_type) {
+void DHT_Unified::setName(sensor_t *sensor)
+{
+  switch (_type)
+  {
   case DHT11:
     strncpy(sensor->name, "DHT11", sizeof(sensor->name) - 1);
     break;
@@ -71,8 +73,10 @@ void DHT_Unified::setName(sensor_t *sensor) {
  *  @param  sensor
  *          Sensor that will be set
  */
-void DHT_Unified::setMinDelay(sensor_t *sensor) {
-  switch (_type) {
+void DHT_Unified::setMinDelay(sensor_t *sensor)
+{
+  switch (_type)
+  {
   case DHT11:
     sensor->min_delay = 1000000L; // 1 second (in microseconds)
     break;
@@ -107,7 +111,8 @@ DHT_Unified::Temperature::Temperature(DHT_Unified *parent, int32_t id)
  *  @param  event
  *  @return always returns true
  */
-bool DHT_Unified::Temperature::getEvent(sensors_event_t *event) {
+bool DHT_Unified::Temperature::getEvent(sensors_event_t *event)
+{
   // Clear event definition.
   memset(event, 0, sizeof(sensors_event_t));
   // Populate sensor reading values.
@@ -124,7 +129,8 @@ bool DHT_Unified::Temperature::getEvent(sensors_event_t *event) {
  *  @brief  Provides the sensor_t data for this sensor
  *  @param  sensor
  */
-void DHT_Unified::Temperature::getSensor(sensor_t *sensor) {
+void DHT_Unified::Temperature::getSensor(sensor_t *sensor)
+{
   // Clear sensor definition.
   memset(sensor, 0, sizeof(sensor_t));
   // Set sensor name.
@@ -135,7 +141,8 @@ void DHT_Unified::Temperature::getSensor(sensor_t *sensor) {
   // Set type and characteristics.
   sensor->type = SENSOR_TYPE_AMBIENT_TEMPERATURE;
   _parent->setMinDelay(sensor);
-  switch (_parent->_type) {
+  switch (_parent->_type)
+  {
   case DHT11:
     sensor->max_value = 50.0F;
     sensor->min_value = 0.0F;
@@ -180,7 +187,8 @@ DHT_Unified::Humidity::Humidity(DHT_Unified *parent, int32_t id)
  *  @param  event
  *  @return always returns true
  */
-bool DHT_Unified::Humidity::getEvent(sensors_event_t *event) {
+bool DHT_Unified::Humidity::getEvent(sensors_event_t *event)
+{
   // Clear event definition.
   memset(event, 0, sizeof(sensors_event_t));
   // Populate sensor reading values.
@@ -197,7 +205,8 @@ bool DHT_Unified::Humidity::getEvent(sensors_event_t *event) {
  *  @brief  Provides the sensor_t data for this sensor
  *  @param  sensor
  */
-void DHT_Unified::Humidity::getSensor(sensor_t *sensor) {
+void DHT_Unified::Humidity::getSensor(sensor_t *sensor)
+{
   // Clear sensor definition.
   memset(sensor, 0, sizeof(sensor_t));
   // Set sensor name.
@@ -208,7 +217,8 @@ void DHT_Unified::Humidity::getSensor(sensor_t *sensor) {
   // Set type and characteristics.
   sensor->type = SENSOR_TYPE_RELATIVE_HUMIDITY;
   _parent->setMinDelay(sensor);
-  switch (_parent->_type) {
+  switch (_parent->_type)
+  {
   case DHT11:
     sensor->max_value = 80.0F;
     sensor->min_value = 20.0F;

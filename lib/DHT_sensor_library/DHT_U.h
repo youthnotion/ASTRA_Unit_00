@@ -42,7 +42,8 @@
  *  @brief  Class that stores state and functions for interacting with
  * DHT_Unified.
  */
-class DHT_Unified {
+class DHT_Unified
+{
 public:
   DHT_Unified(uint8_t pin, uint8_t type, uint8_t count = 6,
               int32_t tempSensorId = -1, int32_t humiditySensorId = -1);
@@ -51,7 +52,8 @@ public:
   /*!
    *  @brief  Class that stores state and functions about Temperature
    */
-  class Temperature : public Adafruit_Sensor {
+  class Temperature : public Adafruit_Sensor
+  {
   public:
     Temperature(DHT_Unified *parent, int32_t id);
     bool getEvent(sensors_event_t *event);
@@ -65,7 +67,8 @@ public:
   /*!
    *  @brief  Class that stores state and functions about Humidity
    */
-  class Humidity : public Adafruit_Sensor {
+  class Humidity : public Adafruit_Sensor
+  {
   public:
     Humidity(DHT_Unified *parent, int32_t id);
     bool getEvent(sensors_event_t *event);

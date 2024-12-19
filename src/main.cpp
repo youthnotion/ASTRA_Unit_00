@@ -10,8 +10,8 @@
 
 #define BLYNK_PRINT Serial
 
-#define SCREEN_WIDTH 128  // OLED display width, in pixels
-#define SCREEN_HEIGHT 32  // OLED display height, in pixels
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 32 // OLED display height, in pixels
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 #define analogPin A0
@@ -36,7 +36,8 @@ float distanceInch;
 
 BlynkTimer timer;
 
-void transmission() {
+void transmission()
+{
   Blynk.virtualWrite(V0, analogSensorValue);
   Blynk.virtualWrite(V1, temperature);
   Blynk.virtualWrite(V2, humidity);
@@ -44,7 +45,8 @@ void transmission() {
   Blynk.virtualWrite(V5, millis() / 1000);
 }
 
-void setup() {
+void setup()
+{
 
   Serial.begin(115200);
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
@@ -98,7 +100,8 @@ void setup() {
   Serial.println(F("------------------------------------"));
   // Set delay between sensor readings based on sensor details.
 
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
+  {
     Serial.println(F("SSD1306 allocation failed"));
     for (;;)
       ;
@@ -111,8 +114,8 @@ void setup() {
   display.display();
 }
 
-
-void loop() {
+void loop()
+{
   digitalWrite(LED_BUILTIN, HIGH);
   Blynk.run();
   timer.run();
@@ -122,25 +125,30 @@ void loop() {
 
   sensors_event_t event;
   dht.temperature().getEvent(&event);
-  if (!isnan(event.temperature)) {
+  if (!isnan(event.temperature))
+  {
     temperature = event.temperature;
     Serial.print(F("Temperature: "));
     Serial.print(temperature);
     Serial.println(F("°C"));
-  } else {
+  }
+  else
+  {
     Serial.println(F("Error reading temperature!"));
   }
 
   dht.humidity().getEvent(&event);
-  if (!isnan(event.relative_humidity)) {
+  if (!isnan(event.relative_humidity))
+  {
     humidity = event.relative_humidity;
     Serial.print(F("Humidity: "));
     Serial.print(humidity);
     Serial.println(F("%"));
-  } else {
+  }
+  else
+  {
     Serial.println(F("Error reading humidity!"));
   }
-
 
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
