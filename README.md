@@ -33,6 +33,8 @@ This documentation explains how to replicate the system step by step.
 | OLED Display SCL      | D1           |
 | MQ135 Analog Sensor   | A0           |
 
+![alt text](https://electropeak.com/learn/wp-content/uploads/2023/05/esp8266-module-pinout-1200x750.jpg)
+
 #### Notes
 - For the **DHT22**, use a 10kΩ pull-up resistor between the data pin and 3.3V.  
 - The **OLED** I2C address is `0x3C`. Ensure your display matches this configuration.
