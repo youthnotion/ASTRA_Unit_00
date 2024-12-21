@@ -18,7 +18,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 #define dhtPin D5
 #define trigPin D6
 #define echoPin D7
-#define buzzerPin d8
+#define buzzerPin D8
 
 #define DHTTYPE DHT22
 
@@ -55,9 +55,10 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
 
   dht.begin();
-  Serial.println(F("DHTxx Unified Sensor Example"));
+  Serial.println(F("DHT22 Unified Sensor Unit"));
   // Print temperature sensor details.
   sensor_t sensor;
   dht.temperature().getSensor(&sensor);
@@ -135,6 +136,7 @@ void loop()
   else
   {
     Serial.println(F("Error reading temperature!"));
+    digitalWrite(buzzerPin, HIGH);
   }
 
   dht.humidity().getEvent(&event);
@@ -148,6 +150,7 @@ void loop()
   else
   {
     Serial.println(F("Error reading humidity!"));
+    digitalWrite(buzzerPin, HIGH);
   }
 
   digitalWrite(trigPin, LOW);
